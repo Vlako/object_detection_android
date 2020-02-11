@@ -109,6 +109,8 @@ class TFLiteObjectDetectionAPIModel private constructor() : Classifier {
         // after scaling them back to the input size.
         val recognitions = ArrayList<Classifier.Recognition>(NUM_DETECTIONS)
         for (i in 0 until NUM_DETECTIONS) {
+            if(outputScores!![0][i] < 0) continue
+
             val detection = RectF(
                     outputLocations!![0][i][1] * inputSize,
                     outputLocations!![0][i][0] * inputSize,
@@ -117,7 +119,7 @@ class TFLiteObjectDetectionAPIModel private constructor() : Classifier {
             // SSD Mobilenet V1 Model assumes class 0 is background class
             // in label file and class labels start from 1 to number_of_classes+1,
             // while outputClasses correspond to class index from 0 to number_of_classes
-            val labelOffset = 1
+            val labelOffset = 0
             recognitions.add(
                     Classifier.Recognition(
                             "" + i,
