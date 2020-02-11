@@ -148,7 +148,7 @@ class TFLiteObjectDetectionAPIModel private constructor() : Classifier {
     companion object {
 
         // Only return this many results.
-        private const val NUM_DETECTIONS = 10
+        private const val NUM_DETECTIONS = 100
         // Float model
         private const val IMAGE_MEAN = 128.0f
         private const val IMAGE_STD = 128.0f
