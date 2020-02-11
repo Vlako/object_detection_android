@@ -109,6 +109,8 @@ class TFLiteObjectDetectionAPIModel private constructor() : Classifier {
         // after scaling them back to the input size.
         val recognitions = ArrayList<Classifier.Recognition>(NUM_DETECTIONS)
         for (i in 0 until NUM_DETECTIONS) {
+            if(outputScores!![0][i] < 0) continue
+
             val detection = RectF(
                     outputLocations!![0][i][1] * inputSize,
                     outputLocations!![0][i][0] * inputSize,
@@ -150,8 +152,8 @@ class TFLiteObjectDetectionAPIModel private constructor() : Classifier {
         // Only return this many results.
         private const val NUM_DETECTIONS = 10
         // Float model
-        private const val IMAGE_MEAN = 128.0f
-        private const val IMAGE_STD = 128.0f
+        private const val IMAGE_MEAN = 0.0f
+        private const val IMAGE_STD = 1.0f
 
         /** Memory-map the model file in Assets.  */
         @Throws(IOException::class)
