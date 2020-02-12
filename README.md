@@ -9,3 +9,6 @@ https://drive.google.com/open?id=13NtDRCRXy2SehhC6UvwRURC6qdsnjavI
 
 # Обученные на [Open Images](https://storage.googleapis.com/openimages/web/index.html)
 - SSD MobileNet V2 - ssd_mobilenet_v2_oid_v4.tflite
+
+Пример на iOS
+https://github.com/tensorflow/examples/tree/master/lite/examples/image_classification/ios
